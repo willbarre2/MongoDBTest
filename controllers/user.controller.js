@@ -23,17 +23,17 @@ module.exports.updateUser = async (req, res) =>{
     }
 
     
-        await UserModel.findOneAndUpdate(
-            { _id: req.params.id },
-            {
-                $set: {
-                    bio: req.body.bio,
-                },
+    await UserModel.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+            $set: {
+                bio: req.body.bio,
             },
-            { new: true, upsert: true, setDefaultsOnInsert: true}
-        )
-        .then((docs) => res.send(docs))
-        .catch((err) =>res.status(500).send({ message: err}));
+        },
+        { new: true, upsert: true, setDefaultsOnInsert: true}
+    )
+    .then((docs) => res.send(docs))
+    .catch((err) =>res.status(500).send({ message: err}));
     
 };
 
