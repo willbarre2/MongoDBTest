@@ -63,14 +63,14 @@ module.exports.follow = async (req, res) =>{
         
     )
     .then((docs) => res.send(docs))
-    .catch((err) =>res.status(500).send({ message: err}));
+    .catch((err) =>res.status(400).send({ message: err}));
 
     // add to the following liste
     await UserModel.findByIdAndUpdate(req.body.idToFollow, {
         $addToSet: { followers: req.params.id}},
         { new: true, upsert: true},
     )
-    .catch((err) =>res.status(500).send({ message: err}));
+    .catch((err) =>res.status(400).send({ message: err}));
 }
 
 module.exports.unfollow = async (req, res) =>{
@@ -85,12 +85,12 @@ module.exports.unfollow = async (req, res) =>{
         
     )
     .then((docs) => res.send(docs))
-    .catch((err) =>res.status(500).send({ message: err}));
+    .catch((err) =>res.status(400).send({ message: err}));
 
     // remove to the following liste
     await UserModel.findByIdAndUpdate(req.body.idToUnfollow, {
         $pull: { followers: req.params.id}},
         { new: true, upsert: true},
     )
-    .catch((err) =>res.status(500).send({ message: err}));
+    .catch((err) =>res.status(400).send({ message: err}));
 }
