@@ -6,7 +6,7 @@ module.exports.signUpErrors = (err) =>{
     }
 
     if (err.message.includes('email')) {
-        errors.email = "Email incorrect";
+        errors.email = "format Email incorrect";
     }
 
     if (err.message.includes('password')) {

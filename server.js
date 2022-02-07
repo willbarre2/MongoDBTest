@@ -9,6 +9,7 @@ const cors = require('cors');
 const app = express();
 
 const corsOptions = {
+    origin: (origin, callback) => callback(null, true),
     credentials: true,
     'allowedHeaders': ['sessionId', 'Content-Type'],
     'exposedHeaders': ['sessionId'],
