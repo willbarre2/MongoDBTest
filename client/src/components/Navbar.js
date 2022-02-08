@@ -2,14 +2,18 @@ import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { UidContext } from './AppContext';
 import Logout from './Log/Logout';
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
     const uid = useContext(UidContext);
+    const userData = useSelector((state) => state.userReducer);
+    
+
     return (
         <nav>
             <div className="nav-container">
                 <div className="logo">
-                    <NavLink exact to="/">
+                    <NavLink to="/">
                         <div className="logo">
                             <img src="./img/icon.png" alt="logo racoont" />
                             <h3>Raccoont</h3>
@@ -20,8 +24,8 @@ const Navbar = () => {
                     <ul>
                         <li></li>
                         <li className="welcome">
-                            <NavLink exact to="/profil">
-                                <h5>Bienvenue 'val dyn'</h5>
+                            <NavLink to="/profil">
+                                <h5>Bienvenue {userData.pseudo}</h5>
                             </NavLink>
                         </li>
                         <Logout />
@@ -30,7 +34,7 @@ const Navbar = () => {
                     <ul>
                         <li></li>
                         <li>
-                            <NavLink exact to="/profil">
+                            <NavLink to="/profil">
                                 <img src="./img/icons/login.svg" alt="icon login" />
                             </NavLink>
                         </li>
