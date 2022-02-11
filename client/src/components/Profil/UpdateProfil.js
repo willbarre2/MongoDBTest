@@ -75,6 +75,8 @@ const UpdateProfil = () => {
                                     )
                                 }
                             }
+                            // enlève erreur
+                            return null
                         })}
                     </ul>
                 </div>
@@ -99,6 +101,7 @@ const UpdateProfil = () => {
                                     )
                                 }
                             }
+                            return null
                         })}
                     </ul>
                 </div>
