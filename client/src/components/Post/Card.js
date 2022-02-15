@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updatePost } from '../../actions/post.action';
 import FollowHandler from '../Profil/FollowHandler';
 import { dateParser, isEmpty } from '../Utils';
+import CardComments from './CardComments';
+import DeleteCard from './DeleteCard';
 import LikeButton from './LikeButton';
 
 const Card = ({ post }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isUpdated, setIsUpdated] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
+    const [showComments, setShowComments] = useState(false);
     const usersData = useSelector((state) => state.usersReducer);
     const userData = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
@@ -53,7 +56,7 @@ const Card = ({ post }) => {
                                     }).join('')
                                     }
                                 </h3>
-                                {post.psterId !== userData._id && (
+                                {post.posterId !== userData._id && (
                                     <FollowHandler idToFollow={post.posterId} type={'card'} />
                                 )}
                             </div>
@@ -90,17 +93,18 @@ const Card = ({ post }) => {
                                 <div onClick={() => setIsUpdated(!isUpdated)}>
                                     <img src="./img/icons/edit.svg" alt="" />
                                 </div>
+                                <DeleteCard id={post._id} />
                             </div>
                         )}
                         <div className="card-footer">
                             <div className="comment-icon">
-                                <img src="./img/icons/message1.svg" alt="comment" />
+                                <img onClick={() => setShowComments(!showComments)} src="./img/icons/message1.svg" alt="comment" />
                                 <span>{post.comments.length}</span>
                             </div>
                             <LikeButton post={post} />
                             <img src="./img/icons/share.svg" alt="share" />
                         </div>
-
+                        {showComments && <CardComments post={post} />}
                     </div>
                 </>
             )}
