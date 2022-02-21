@@ -6,3 +6,6 @@ install back: dotenv, express, nodemon, mongoose, validator, bcrypt, cookie-pars
 install front: npx create-react-app client, node-sass, react-router-dom, axios, dotenv, js-cookie, react-redux, redux, redux-thunk, redux-logger ou redux-devtools-extension (installer extension ds chrome), reactjs-popup
 
 <!-- login: filsdesagesfarouches@gmail.com TestTest22 -->
+
+npm start à la racine pour lancer le back
+npm start ds /client pour lancer le front
