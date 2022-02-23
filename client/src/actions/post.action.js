@@ -10,6 +10,9 @@ export const UNLIKE_POST = "UNLIKE_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
 
+// trends
+// export const GET_TRENDS = "GET_TRENDS"
+
 //erreur
 
 export const GET_POST_ERRORS = "GET_POST_ERRORS";
@@ -21,8 +24,12 @@ export const getPosts = (num) => {
         .get(`${process.env.REACT_APP_API_URL}api/post/`)
         .then((res) => {
             const array = res.data.slice(0, num);
+            let sortedArray = res.data.sort((a, b) => {
+                return b.likers.length - a.likers.length
+            })
+            sortedArray.length = 3;
             dispatch({type: GET_POSTS, payload: array});
-            dispatch({type: GET_ALL_POSTS, payload: res.data});
+            dispatch({type: GET_ALL_POSTS, payload: sortedArray});
         })
         .catch((err) => console.log(err));
     }
@@ -96,6 +103,13 @@ export const deletePost = (postId) =>{
         .catch((err) => console.log(err));
     }
 }
+
+// export const getTrends = (sortedArray) => {
+//     return (dispatch) => {
+//         dispatch({type: GET_TRENDS, payload: sortedArray});
+//     }
+// }
+
 
 // comments
 
