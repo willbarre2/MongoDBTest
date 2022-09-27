@@ -8,4 +8,5 @@ install front: npx create-react-app client, node-sass, react-router-dom, axios, 
 <!-- login: filsdesagesfarouches@gmail.com TestTest22 -->
 
 npm start à la racine pour lancer le back
+
 npm start ds /client pour lancer le front

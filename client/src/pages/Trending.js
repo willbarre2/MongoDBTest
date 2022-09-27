@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import LeftNav from '../components/LeftNav';
 import Card from '../components/Post/Card';
@@ -7,6 +8,7 @@ import { isEmpty } from '../components/Utils';
 
 const Trending = () => {
     const posts = useSelector((state) => state.allPostsReducer);
+
 
     return (
         <div className="trending-page">
@@ -26,3 +28,6 @@ const Trending = () => {
 };
 
 export default Trending;
+
+
+
